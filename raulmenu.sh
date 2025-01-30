@@ -108,6 +108,25 @@ adivina() {
 	  fi
 	done
 }
+
+edad(){
+	read -p "Introduce tu edad: " edad
+	if (( $edad < 3 )); then
+	  echo "Estas en la niñez"
+	elif (( $edad <= 10 && $edad >= 3 )); then
+	  echo "Estás en la infancia"
+	elif (( $edad < 18 && $edad > 10 )); then
+	  echo "Estás en la adolescencia"
+	elif (( $edad < 40 && $edad >18 )); then
+	  echo "Estás en la juventud"
+	elif (( $edad < 65 && $edad >=40 )); then
+	  echo "Estás en la madurez"
+	else
+	  echo "Estás en la vejez"
+	fi
+}
+
+
 op=1
 
 while [ $op != 0 ]; do
@@ -129,7 +148,7 @@ while [ $op != 0 ]; do
 	    read -p "¿Qué DNS le quiere dar? (Ej: 8.8.8.8): " DNS
 	    configurared $ip $mascara $puerta $DNS;;
 	  4)adivina;;
-#	5)
+	  5)edad;;
 #	6)
 #	7)
 #	8)
@@ -158,3 +177,4 @@ done
 #Usa [[ ... ]] para comparaciones de cadenas y condiciones más avanzadas.
 #cat <<EOF inicia un bloque de texto, y todo lo que escribas después se mantiene tal cual, incluyendo saltos de línea y espacios.
 #[ $? -ne 0 ] significa "si el código de salida no es 0" (o sea, si falló).
+#(( intentos ++ ))  Con esta opercaion sumamos +1 a la variable intentos
