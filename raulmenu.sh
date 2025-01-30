@@ -117,7 +117,7 @@ edad(){
 	  echo "Estás en la infancia"
 	elif (( $edad < 18 && $edad > 10 )); then
 	  echo "Estás en la adolescencia"
-	elif (( $edad < 40 && $edad >18 )); then
+	elif (( $edad < 40 && $edad >=18 )); then
 	  echo "Estás en la juventud"
 	elif (( $edad < 65 && $edad >=40 )); then
 	  echo "Estás en la madurez"
