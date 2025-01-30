@@ -82,22 +82,25 @@ EOF
 	fi
 }
 
-#Mostrar el menu
-menu
+op=1
 
-#Coger la opcion
-read -p "Selecione una opcion: " op
+while [ $op != 0 ]; do
+	#Mostrar el menu
+	menu
 
-case $op in
-	1)read -p "¿De qué numeros quieres su factorial?: " fac
-	 factorial $fac;;
-	2)read -p "¿Que año quieres saber si es bisiesto?: " bisi
-	 bisiesto $bisi;;
-	3)read -p "¿Qué dirección ip le quieres dar? (Ej:192.168.115.5): " ip
-	  read -p "¿Qué dirección máscara le quiere dar? (Ej:24): " mascara
-	  read -p "¿Qué puerta enlace le quiere dar? (Ej: 192.168.115.1): " puerta
-	  read -p "¿Qué DNS le quiere dar? (Ej: 8.8.8.8): " DNS
-	  configurared $ip $mascara $puerta $DNS;;
+	#Coger la opcion
+	read -p "Selecione una opcion: " op
+
+	case $op in
+	  1)read -p "¿De qué numeros quieres su factorial?: " fac
+	    factorial $fac;;
+	  2)read -p "¿Que año quieres saber si es bisiesto?: " bisi
+	    bisiesto $bisi;;
+	  3)read -p "¿Qué dirección ip le quieres dar? (Ej:192.168.115.5): " ip
+	    read -p "¿Qué dirección máscara le quiere dar? (Ej:24): " mascara
+	    read -p "¿Qué puerta enlace le quiere dar? (Ej: 192.168.115.1): " puerta
+	    read -p "¿Qué DNS le quiere dar? (Ej: 8.8.8.8): " DNS
+	    configurared $ip $mascara $puerta $DNS;;
 #	4)
 #	5)
 #	6)
@@ -115,9 +118,13 @@ case $op in
 #	18)
 #	19)
 #	20)
-	*) echo  "Opción no válida." ; exit
+	  *) echo  "Opción no válida."
 	esac
 
+	if [ $op =! 0 ]; then
+	  read -p "Presiona Enter para continuar..."
+	fi
+done
 #Apuntes Script
 #Usa (( ... )) para operaciones matemáticas y condiciones numéricas.
 #Usa [[ ... ]] para comparaciones de cadenas y condiciones más avanzadas.
