@@ -90,11 +90,11 @@ adivina() {
 	while (( $num != $numAle )); do
 	  read -p "Introduce un número entre 1 y 100: " num
 	  if (( $num < $numAle )); then
-	    echo "El numero que has introducido es mayor que ese número"
+	    echo "El numero que has introducido es mayor que el número que buscas"
 	    (( intentos ++ ))
 
 	  elif (( $num > $numAle )); then
-            echo "El numero que has introducido es menor que ese número"
+            echo "El numero que has introducido es menor que el número que buscas"
 	    (( intentos ++))
 
 	  else
