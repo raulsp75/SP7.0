@@ -85,7 +85,7 @@ EOF
 
 op=1
 
-while [ "$op" != 0 ]; do
+while [ $op != 0 ]; do
 	#Mostrar el menu
 	menu
 
@@ -123,7 +123,7 @@ while [ "$op" != 0 ]; do
 	  *) echo  "Opción no válida."
 	esac
 
-	if [ "$op" != 0 ]; then
+	if [ $op != 0 ]; then
 	  read -p "Presiona Enter para continuar..."
 	  echo "==================================="
 	fi
