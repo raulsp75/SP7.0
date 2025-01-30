@@ -84,21 +84,20 @@ EOF
 }
 
 adivina() {
-	intentos=0
 	numAle=$(( RANDOM % 100 + 1 ))
 	num=101
 	while (( $num != $numAle )); do
 	  read -p "Introduce un número entre 1 y 100: "
 	  if (( $num < $numAle )); then
 	    echo "El numero que has introducido es mayor que ese número"
-	    $intentos=(( $intentos + 1 ))
+	    $intentos=$intentos + 1
 
 	  elif (( $num > $numAle )); then
             echo "El numero que has introducido es menor que ese número"
-	    $intentos=(( $intentos + 1 ))
+	    $intentos= $intentos + 1
 
 	  else
-	    $intentos=(( $intentos + 1 ))
+	    $intentos=$intentos + 1
 	  echo "Felicidades! Has acertado el $num es el correto. Numero de intentos = $intentos. "
 	  fi
 	done
@@ -123,7 +122,7 @@ while [ $op != 0 ]; do
 	    read -p "¿Qué puerta enlace le quiere dar? (Ej: 192.168.115.1): " puerta
 	    read -p "¿Qué DNS le quiere dar? (Ej: 8.8.8.8): " DNS
 	    configurared $ip $mascara $puerta $DNS;;
-#	4)
+	  4)adivina;;
 #	5)
 #	6)
 #	7)
