@@ -86,18 +86,18 @@ EOF
 adivina() {
 	numAle=$(( RANDOM % 100 + 1 ))
 	num=101
-	while (( $num -ne $numAle )); do
-	  read -p "Introduce un número entre 1 y 100: "
-	  if (( $num -lt $numAle )); then
+	while (( $num != $numAle )); do
+	  read -p "Introduce un número entre 1 y 100: " num
+	  if (( $num < $numAle )); then
 	    echo "El numero que has introducido es mayor que ese número"
-	    $intentos=$intentos + 1
+	    $intentos=$(( intentos + 1 ))
 
-	  elif (( $num -gt $numAle )); then
+	  elif (( $num > $numAle )); then
             echo "El numero que has introducido es menor que ese número"
-	    $intentos= $intentos + 1
+	    $intentos= $(( intentos + 1 ))
 
 	  else
-	    $intentos=$intentos + 1
+	    $intentos=$(( intentos + 1 ))
 	  echo "Felicidades! Has acertado el $num es el correto. Numero de intentos = $intentos. "
 	  fi
 	done
