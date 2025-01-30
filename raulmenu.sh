@@ -38,11 +38,12 @@ factorial() {
 }
 
 bisiesto() {
+	#Abrimos un if y comparamos el numero del parametro con la condición de bisiesto
 	if (( $1%4==0 && $1%100!=0 || $1%400==0 )); then
-	echo "El número $1 es un número bisiesto"
+	  echo "El número $1 es un número bisiesto"
 
 	else
-	echo "El número $1 no es bisiesto"
+	  echo "El número $1 no es bisiesto"
 
 	fi
 }
@@ -50,9 +51,10 @@ bisiesto() {
 configurared() {
 	#Confrimamos que los parametros existen
 	if [[ -n $1 && -n $2 && -n $3 && -n $4 ]]; then
-	echo "Introduciendo parámetros..."
+	  echo "Introduciendo parámetros..."
+
 	else
-	echo "Faltan parámetros por añadir"
+	  echo "Faltan parámetros por añadir"
 	exit
 	fi
 	#Introducimos los parametros en el archivo
@@ -72,23 +74,26 @@ EOF
 	#Aplicamos la configuración
 	netplan apply
 	if [ $? -ne 0 ]; then
-	echo "Las opciones proporcionadas no pueden ser aplicadas. Vuelva a intentarlo ejecutando el script"
+	  echo "Las opciones proporcionadas no pueden ser aplicadas. Vuelva a intentarlo ejecutando el script"
 	exit
-
+	#Mostramos la configuración
 	else
-	echo "==========================================================================="
-	echo "La configuración ha sido modificada con exito. Se la muestro a continuación:"
-	sleep 1
-	ip a
+	  echo "==========================================================================="
+	  echo "La configuración ha sido modificada con exito. Se la muestro a continuación:"
+	  sleep 1
+	  ip a
 	fi
 }
 
 adivina() {
+	#Declaramos las variables necesarias
 	numAle=$(( RANDOM % 100 + 1 ))
 	num=101
 	intentos=0
+	#Creamos un bucle hasta que encontremos el número que buscamos
 	while (( $num != $numAle )); do
 	  read -p "Introduce un número entre 1 y 100: " num
+	  #Abrimos un if para comparar el valor
 	  if (( $num < $numAle )); then
 	    echo "El numero que has introducido es mayor que el número que buscas"
 	    (( intentos ++ ))
