@@ -1,6 +1,7 @@
 #!/bin/bash
 #Funcion del menú
 menu() {
+	echo "0. Salir"
 	echo "1. Factorial"
 	echo "2. Bisiesto"
 	echo "3. Configurar Red"
@@ -84,7 +85,7 @@ EOF
 
 op=1
 
-while [ $op != 0 ]; do
+while [ "$op" != 0 ]; do
 	#Mostrar el menu
 	menu
 
@@ -92,6 +93,7 @@ while [ $op != 0 ]; do
 	read -p "Selecione una opcion: " op
 
 	case $op in
+	  0)echo "Saliendo...";;
 	  1)read -p "¿De qué numeros quieres su factorial?: " fac
 	    factorial $fac;;
 	  2)read -p "¿Que año quieres saber si es bisiesto?: " bisi
@@ -121,8 +123,9 @@ while [ $op != 0 ]; do
 	  *) echo  "Opción no válida."
 	esac
 
-	if [ $op =! 0 ]; then
+	if [ "$op" != 0 ]; then
 	  read -p "Presiona Enter para continuar..."
+	  echo "==================================="
 	fi
 done
 #Apuntes Script
