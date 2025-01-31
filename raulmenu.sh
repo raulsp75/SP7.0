@@ -162,8 +162,10 @@ contar(){
 }
 
 privilegios(){
-	if [[ $(groups | grep -qw "sudo") || $EUID -eq 0 ]] ; then
-   	  echo "El usuario tiene privilegios administrativos."
+	if [[ $EUID -eq 0 ]] ; then
+   	  echo "El usuario tiene privilegios administrativos (root)."
+	elif  groups | grep -qw "sudo"; then
+	  echo "El usuario tiene privilegios administrativos (sudo)."
 	else
     	  echo "El usuario no tiene privilegios administrativos."
 	fi
