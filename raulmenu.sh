@@ -130,7 +130,9 @@ edad(){
 
 fichero(){
 	read -p "Seleccione el nombre del fichero que quiere buscar: (Ej: Fechero.txt)" fichero
-	ruta=( find / | grep fichero 2>/dev/null )
+	ruta=$(find / -name $fichero 2>/dev/null)
+	echo "$ruta"
+}
 
 op=1
 
@@ -154,7 +156,7 @@ while [ $op != 0 ]; do
 	    configurared $ip $mascara $puerta $DNS;;
 	  4)adivina;;
 	  5)edad;;
-#	6)
+	  6)fichero;;
 #	7)
 #	8)
 #	9)
