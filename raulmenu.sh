@@ -171,6 +171,12 @@ privilegios(){
 	fi
 }
 
+octal(){
+	read -p "Seleccione la ruta absoluta de su directorio/archivo: (Ej:/home/raul/prueb.txt) " ruta
+	permisos=$(stat -c "%a" "$ruta")
+	echo "Los permisos de ruta son: "$permisos""
+}
+
 op=1
 
 while [ $op != 0 ]; do
@@ -197,7 +203,7 @@ while [ $op != 0 ]; do
           7)buscar;;
           8)contar;;
 	  9)privilegios;;
-#	10)
+	  10)octal;;
 #	11)
 #	12)
 #	13)
