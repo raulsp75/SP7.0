@@ -132,8 +132,10 @@ fichero(){
 	read -p "Seleccione el nombre del fichero que quiere buscar: (Ej: Fichero.txt) " fichero
 	ruta=$(find / -name "$fichero" 2>/dev/null)
 	tamano=$(ls -l "$ruta" | awk '{print $5}')
-	echo "Esta es su ruta: $ruta "
+	file=$(file -b "$ruta")
+	echo "Esta es su ruta: $ruta"
 	echo "Este es su tamaño: $tamano bytes"
+	echo "Este es el tipo de archivo: $file"
 }
 
 op=1
