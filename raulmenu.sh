@@ -110,7 +110,9 @@ adivina() {
 }
 
 edad(){
+	#Le pedimos la edad del usuario
 	read -p "Introduce tu edad: " edad
+	#Metemos un if para saber la edad que tiene el usuario
 	if (( $edad < 3 )); then
 	  echo "Estas en la niñez"
 	elif (( $edad <= 10 && $edad >= 3 )); then
