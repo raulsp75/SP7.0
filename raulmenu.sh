@@ -146,12 +146,12 @@ buscar(){
 	read -p "Seleccione el nombre del fichero que quiere buscar: (Ej: Fichero.txt)" fichero
 	existe=$(find / -name "$fichero" 2>/dev/null)
 	if [[ -f "$existe" ]]; then
-	  echo "Error. El archivo "$fichero" no existe en este equipo."
+	  echo "El archivo este en este directorio: "$existe"."
+          vocal=$(grep -o -i '[aeiou]' "$existe"| wc -l)
+          echo "$fichero está tiene "$vocal" vocales"
 
 	else
-	  echo "El archivo este en este directorio: "$existe"."
-	  vocal=$(grep -o -i '[aeiou]' "$existe"| wc -l)
-	  echo "$fichero está tiene "$vocal" vocales"
+	  echo "Error. El archivo "$fichero" no existe en este equipo."
 	fi
 }
 
