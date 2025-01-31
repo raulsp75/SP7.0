@@ -177,6 +177,12 @@ octal(){
 	echo "Los permisos de ruta son: "$permisos""
 }
 
+romano(){
+	read -p "Selecciona un numero entre el 1-200: " num
+	if [[ "$num" -gt 200 || "$num" -lt 1 ]]; then
+	  echo "El numero "$num" no está entre el 1-200"
+	else
+}
 op=1
 
 while [ $op != 0 ]; do
@@ -204,7 +210,7 @@ while [ $op != 0 ]; do
           8)contar;;
 	  9)privilegios;;
 	  10)octal;;
-#	11)
+	  11)romano;;
 #	12)
 #	13)
 #	14)
