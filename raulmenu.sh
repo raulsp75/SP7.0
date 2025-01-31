@@ -134,10 +134,12 @@ fichero(){
 	tamano=$(ls -l "$ruta" | awk '{print $5}')
 	file=$(file -b "$ruta")
 	inodo=$(ls -i "$ruta" | awk '{print $1}')
+	montaje=$(df raulmenu.sh | awk 'NR==2 {print $1}')
 	echo "Esta es su ruta: $ruta"
 	echo "Este es su tamaño: $tamano bytes"
 	echo "Este es el tipo de archivo: $file"
 	echo "Este es el inodo: $inodo"
+	echo "Este es el punto de montaje: $montaje"
 }
 
 op=1
