@@ -173,7 +173,7 @@ privilegios(){
 
 octal(){
 	read -p "Seleccione la ruta absoluta de su directorio/archivo: (Ej:/home/raul/prueb.txt) " ruta
-	permisos=$(stat -c "%a" "$ruta")
+	permisos=$(stat -c "%#a" "$ruta")
 	echo "Los permisos de ruta son: "$permisos""
 }
 
