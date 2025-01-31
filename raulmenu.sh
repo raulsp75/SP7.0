@@ -142,6 +142,20 @@ fichero(){
 	echo "Este es el punto de montaje: $montaje"
 }
 
+buscar(){
+	read -p "Seleccione el nombre del fichero que quiere buscar: (Ej: Fichero.txt)" fichero
+	existe=$(find / -name "$fichero" 2>/dev/null)
+	if [[ -f "$existe" ]]; then
+	  echo "Error. El archivo "$fichero" no existe en este equipo."
+
+	else
+	  echo "El archivo este en este directorio: "$existe"."
+	  vocal=$(grep -o -i '[aeiou]' "$existe"| wc -l)
+	  echo "$fichero está tiene "$vocal" vocales"
+	fi
+}
+
+
 op=1
 
 while [ $op != 0 ]; do
@@ -165,7 +179,7 @@ while [ $op != 0 ]; do
 	  4)adivina;;
 	  5)edad;;
 	  6)fichero;;
-#	7)
+          7)buscar;;
 #	8)
 #	9)
 #	10)
