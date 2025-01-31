@@ -143,7 +143,7 @@ fichero(){
 }
 
 buscar(){
-	read -p "Seleccione el nombre del fichero que quiere buscar: (Ej: Fichero.txt)" fichero
+	read -p "Seleccione el nombre del fichero que quiere buscar: (Ej: Fichero.txt) " fichero
 	existe=$(find / -name "$fichero" 2>/dev/null)
 	if [[ -f "$existe" ]]; then
 	  echo "El archivo este en este directorio: "$existe"."
@@ -155,7 +155,11 @@ buscar(){
 	fi
 }
 
-
+contar(){
+	read -p "Selecciona un directorio para saber el numero de ficheros: " fichero
+	numero=$( find "$fichero" -type f | wc -l)
+	 echo "En el directorio "$fichero" hay "$numero" archivos."
+}
 op=1
 
 while [ $op != 0 ]; do
@@ -180,7 +184,7 @@ while [ $op != 0 ]; do
 	  5)edad;;
 	  6)fichero;;
           7)buscar;;
-#	8)
+          8)contar;;
 #	9)
 #	10)
 #	11)
