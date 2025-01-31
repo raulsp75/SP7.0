@@ -129,9 +129,11 @@ edad(){
 }
 
 fichero(){
-	read -p "Seleccione el nombre del fichero que quiere buscar: (Ej: Fechero.txt)" fichero
+	read -p "Seleccione el nombre del fichero que quiere buscar: (Ej: Fichero.txt) " fichero
 	ruta=$(find / -name $fichero 2>/dev/null)
-	echo "$ruta"
+	tamaño=$(ls -l $fichero | awk '{print $5}')
+	echo"Esta es su ruta:$ruta"
+	echo"Este es su tamaño:$tamaño"
 }
 
 op=1
