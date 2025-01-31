@@ -160,6 +160,15 @@ contar(){
 	numero=$( find "$fichero" -type f | wc -l)
 	 echo "En el directorio "$fichero" hay "$numero" archivos."
 }
+
+privilegios(){
+	if [[ $EUID -eq 0 ]]; then
+    	  echo "El usuario tiene privilegios administrativos (root)."
+	else
+    	  echo "El usuario no tiene privilegios administrativos."
+	fi
+}
+
 op=1
 
 while [ $op != 0 ]; do
@@ -185,7 +194,7 @@ while [ $op != 0 ]; do
 	  6)fichero;;
           7)buscar;;
           8)contar;;
-#	9)
+	  9)privilegios;;
 #	10)
 #	11)
 #	12)
