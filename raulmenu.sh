@@ -133,9 +133,11 @@ fichero(){
 	ruta=$(find / -name "$fichero" 2>/dev/null)
 	tamano=$(ls -l "$ruta" | awk '{print $5}')
 	file=$(file -b "$ruta")
+	inodo=$(ls -i "$ruta" | awk '{print $1}')
 	echo "Esta es su ruta: $ruta"
 	echo "Este es su tamaño: $tamano bytes"
 	echo "Este es el tipo de archivo: $file"
+	echo "Este es el inodo: $inodo"
 }
 
 op=1
