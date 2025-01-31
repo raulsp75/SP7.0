@@ -128,6 +128,9 @@ edad(){
 	fi
 }
 
+fichero(){
+	read -p "Seleccione el nombre del fichero que quiere buscar: (Ej: Fechero.txt)" fichero
+	ruta=( find / | grep fichero 2>/dev/null )
 
 op=1
 
