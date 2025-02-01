@@ -185,7 +185,7 @@ octal(){
 #}
 
 automatizar(){
-	dir=$( ls /mnt )
+	dir=$( ls /mnt/usuarios )
 	if [[ "$dir" -eq 0 ]]; then
 	  echo "El listado está vacío."
 
