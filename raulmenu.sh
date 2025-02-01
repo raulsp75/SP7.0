@@ -183,6 +183,21 @@ romano(){
 	  echo "El numero "$num" no está entre el 1-200"
 	else
 }
+
+automatizar(){
+	if [[ ls /mnt -eq 0 ]]; then
+	  echo "El listado está vacío."
+
+	else
+	  for usuarios in $(/mnt/); do
+	  useradd "$usuarios"
+	  
+
+
+}
+
+
+
 op=1
 
 while [ $op != 0 ]; do
