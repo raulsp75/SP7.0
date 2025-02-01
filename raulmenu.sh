@@ -208,14 +208,17 @@ automatizar(){
 }
 
 crear(){
-	if [[ $1 -z && $2 -z ]]; then
-		truncate -s $2k $1
+	if [[ ! -z $1  && ! -z $2 ]]; then
+		truncate -s $2K $1
+		echo "El archivo $1 ha sido creado con $2 kb"
 
-	elif [[ $1 -z ]]; then
-		truncate -s 1024k $1
+	elif [[ ! -z $1 ]]; then
+		truncate -s 1024K $1
+		echo "El archivo $1 ha sido creado con 1024 kb"
 
 	else
-		truncate -s 1024k fichero_vacio
+		truncate -s 1024K fichero_vacio
+		echo "El archivo fichero_vacio ha sido creado con 1024 kb"
 	fi
 }
 
@@ -250,8 +253,8 @@ while [ $op != 0 ]; do
 	  11)romano;;
           12)automatizar;;
 	  13)read -p "Seleccione el nombre del archivo: " nombre
-	     read -p "Seleccione el tamaño del archivo en kb: " tamaño
-	     crear $nombre $tamaño;;
+	     read -p "Seleccione el tamano del archivo en kb: " tamano
+	     crear $nombre $tamano;;
 #	14)
 #	15)
 #	16)
