@@ -198,9 +198,11 @@ automatizar(){
 		while IFS= read -r carpeta; do
 	      		if [ -n "$carpeta" ]; then
 			mkdir -p "/home/$usuarios/$carpeta"
-			echo "Directorio creado /home/$usuarios/$carpeta"
+			echo "Directorio creado: /home/$usuarios/$carpeta"
 	      		fi
 	   	 done < "/mnt/usuarios/$usuarios"
+		rm "/mnt/usuarios/$usuarios"
+		echo "La carpeta /mnt/usuarios/$usuarios ha sido eliminada"
 	  done
 	fi
 }
