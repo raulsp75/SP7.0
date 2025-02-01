@@ -211,14 +211,17 @@ crear(){
 	if [[ ! -z $1  && ! -z $2 ]]; then
 		truncate -s $2K $1
 		echo "El archivo $1 ha sido creado con $2 kb"
+		ls -lh "$1"
 
 	elif [[ ! -z $1 ]]; then
 		truncate -s 1024K $1
 		echo "El archivo $1 ha sido creado con 1024 kb"
+		ls -lh "$1"
 
 	else
 		truncate -s 1024K fichero_vacio
 		echo "El archivo fichero_vacio ha sido creado con 1024 kb"
+		ls -lh fichero_vacio
 	fi
 }
 
