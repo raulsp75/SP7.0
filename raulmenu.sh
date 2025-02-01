@@ -207,6 +207,17 @@ automatizar(){
 	fi
 }
 
+crear(){
+	if [[ $1 -z && $2 -z ]]; then
+		truncate -s $2k $1
+
+	elif [[ $1 -z ]]; then
+		truncate -s 1024k $1
+
+	else
+		truncate -s 1024k fichero_vacio
+	fi
+}
 
 
 op=1
@@ -238,7 +249,9 @@ while [ $op != 0 ]; do
 	  10)octal;;
 	  11)romano;;
           12)automatizar;;
-#	13)
+	  13)read -p "Seleccione el nombre del archivo: " nombre
+	     read -p "Seleccione el tamaño del archivo en kb: " tamaño
+	     crear $nombre $tamaño;;
 #	14)
 #	15)
 #	16)
