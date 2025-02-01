@@ -191,7 +191,7 @@ automatizar(){
 	  echo "El listado está vacío."
 
 	else
-	  for usu in "${usus[@]}"; do
+	  for usu in $usus; do
 	  	useradd "$usu"
 	  	echo "El usuario "$usu" ha sido creado. "
 
