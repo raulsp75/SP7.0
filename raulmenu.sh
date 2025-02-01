@@ -225,6 +225,35 @@ crear(){
 	fi
 }
 
+crear_2(){
+	ficher="fichero_vacio"
+        kb="1024"
+        num=0
+
+        if [ ! -z $1 ]; then
+        	ficher=$1;
+        fi
+
+        if [ ! -z $2 ]; then
+        	kb=$2;
+        fi
+
+        while [ -e $ficher ] && [ $num -lt 9 ]; do
+        	((num++))
+        	ficher="${ficher%[0-9]}$numf"
+        done
+
+        if [ $num -lt 9 ]; then
+        	touch $ficher
+        	truncate -s "${kb}K" $ficher
+
+        else
+       		echo "Limite alcanzado"
+
+        fi
+
+
+}
 
 op=1
 
@@ -258,7 +287,9 @@ while [ $op != 0 ]; do
 	  13)read -p "Seleccione el nombre del archivo: " nombre
 	     read -p "Seleccione el tamano del archivo en kb: " tamano
 	     crear $nombre $tamano;;
-#	14)
+	  14)read -p "Seleccione el nombre del archivo: " nombre
+             read -p "Seleccione el tamano del archivo en kb: " tamano
+             crear_2 $nombre $tamano;;
 #	15)
 #	16)
 #	17)
