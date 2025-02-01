@@ -254,6 +254,12 @@ crear_2(){
         fi
 }
 
+reescribir(){
+	palabra="$1"
+	pal=$( echo "$palabra" | tr 'aeiouAEIOU' '1234512345' )
+	echo "Tu palabra reescrita es "$pal""
+}
+
 op=1
 
 while [ $op != 0 ]; do
@@ -289,7 +295,8 @@ while [ $op != 0 ]; do
 	  14)read -p "Seleccione el nombre del archivo: " nombre
              read -p "Seleccione el tamano del archivo en kb: " tamano
              crear_2 $nombre $tamano;;
-#	15)
+	  15)read -p "Seleccione la palabra que quiera reescribir: " palabra
+	     reescribir $palabra;;
 #	16)
 #	17)
 #	18)
