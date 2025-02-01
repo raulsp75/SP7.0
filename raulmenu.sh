@@ -185,13 +185,22 @@ octal(){
 #}
 
 automatizar(){
-	dir=$( ls /mnt/usuarios )
-	if [[ "$dir" -eq 0 ]]; then
+	dir=$( ls /mnt/usuarios 2>/dev/null )
+
+	if [[ -z "$dir" ]]; then
 	  echo "El listado está vacío."
 
 	else
 	  for usuarios in "$dir"; do
-	  useradd "$usuarios"
+	  	useradd "$usuarios"
+	  	echo "El usuario "$usuarios" ha sido creado. "
+
+		while IFS= read -r carpeta; do
+	      		if [ -n "$carpeta" ]; then
+			mkdir -p "/home/$usuarios/$carpeta"
+			echo "Directorio creado /home/$usuarios/$carpeta"
+	      		fi
+	   	 done < "/mnt/usuarios/$usuarios"
 	  done
 	fi
 }
