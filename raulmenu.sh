@@ -177,23 +177,23 @@ octal(){
 	echo "Los permisos de ruta son: "$permisos""
 }
 
-romano(){
-	read -p "Selecciona un numero entre el 1-200: " num
-	if [[ "$num" -gt 200 || "$num" -lt 1 ]]; then
-	  echo "El numero "$num" no está entre el 1-200"
-	else
-}
+#romano(){
+#	read -p "Selecciona un numero entre el 1-200: " num
+#	if [[ "$num" -gt 200 || "$num" -lt 1 ]]; then
+#	  echo "El numero "$num" no está entre el 1-200"
+#	else
+#}
 
 automatizar(){
-	if [[ ls /mnt -eq 0 ]]; then
+	dir=$( ls /mnt )
+	if [[ "$dir" -eq 0 ]]; then
 	  echo "El listado está vacío."
 
 	else
-	  for usuarios in $(/mnt/); do
+	  for usuarios in "$dir"; do
 	  useradd "$usuarios"
-	  
-
-
+	  done
+	fi
 }
 
 
@@ -226,7 +226,7 @@ while [ $op != 0 ]; do
 	  9)privilegios;;
 	  10)octal;;
 	  11)romano;;
-#	12)
+          12)automatizar;;
 #	13)
 #	14)
 #	15)
