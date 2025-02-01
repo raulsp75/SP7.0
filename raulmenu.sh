@@ -238,18 +238,18 @@ crear_2(){
         	kb=$2;
         fi
 
-        while [ -e $ficher ] && [ $num -lt 10 ]; do
+        while [ -e $ficher ] && [ $num -lt 9 ]; do
         	((num++))
-        	ficher="${ficher%[0-10]}$num"
+        	ficher="${ficher%[0-9]}$num"
         done
 
-        if [ $num -lt 10 ]; then
+        if [ $num -lt 9 ]; then
         	touch $ficher
         	truncate -s "${kb}K" $ficher
 		echo "Archivo creado: $ficher con tamaño ${kb}K"
 
         else
-       		echo "Limite alcanzado"
+       		echo "Limite alcanzado. No se pudo crear el archivo. "
 
         fi
 }
