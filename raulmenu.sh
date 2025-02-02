@@ -273,8 +273,8 @@ alumnos(){
 	suspensos=0
 	aprobados=0
 
-	for (i=0; i<=$alum; i++); do
-		read -p "Selecciona la nota de alumnado i: " not
+	for (( i=0; i<=$alum; i++ )) do
+		read -p "Selecciona la nota de alumnado $i: " not
 		sum_not=$[[ "$not" + "$sum_not"]]
 		if [[ $not < 5 ]]; then
 			(( supensos++ ))
