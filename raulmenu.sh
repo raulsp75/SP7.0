@@ -291,7 +291,7 @@ alumnos() {
 quita_blancos(){
 	for archivo in *; do
 		if [[ "$archivo" == *" "* ]]; then
-			nue_archivo="${file// /_}"
+			nue_archivo="${archivo// /_}"
 			mv "$archivo" "$nue_archivo"
 			echo "El archivo "$archivo" ahora es "$nue_archivo""
 		fi
