@@ -275,14 +275,14 @@ alumnos(){
 
 	for (( i=0; i<=$alum; i++ )) do
 		read -p "Selecciona la nota de alumnado $i: " not
-		sum_not=$[[ "$not" + "$sum_not"]]
+		sum_not=$(( "$not" + "$sum_not" ))
 		if [[ $not < 5 ]]; then
 			(( supensos++ ))
 		else
 			(( aprobados++ ))
 		fi
 	done
-	not_med=$[[ "$sum_not"/"$alum" ]]
+	not_med=$(( "$sum_not"/"$alum" )
 	echo "Total de suspensos: $suspensos"
 	echo "Totale de apronbados: $aprobados"
 	echo "Nota media: $not_med"
@@ -325,7 +325,7 @@ while [ $op != 0 ]; do
              crear_2 $nombre $tamano;;
 	  15)read -p "Seleccione la palabra que quiera reescribir: " palabra
 	     reescribir $palabra;;
-          16)contarusu;;
+#          16)contarusu;;
 	  17)alumnos;;
 #	18)
 #	19)
