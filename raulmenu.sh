@@ -273,7 +273,7 @@ alumnos() {
 	suspensos=0
 	aprobados=0
 
-	for (( i=0; i<=$alum; i++ )) do
+	for (( i=1; i<=$alum; i++ )) do
 		read -p "Selecciona la nota de alumnado $i: " not
 		sum_not=$(( "$not" + "$sum_not" ))
 		if [[ $not < 5 ]]; then
@@ -284,7 +284,7 @@ alumnos() {
 	done
 	not_med=$(( "$sum_not"/"$alum" ))
 	echo "Total de suspensos: $suspensos"
-	echo "Totale de apronbados: $aprobados"
+	echo "Total de aprobados: $aprobados"
 	echo "Nota media: $not_med"
 }
 
