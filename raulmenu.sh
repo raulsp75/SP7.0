@@ -261,13 +261,13 @@ reescribir(){
 	echo "Tu palabra reescrita es "$pal""
 }
 
-contusu(){
-	fecha=$(date +Y%m%d%)
-	
+#contusu(){
+#	fecha=$(date +Y%m%d%)
+#	
 
-}
+#}
 
-alumnos(){
+alumnos() {
 	read -p "Seleccione el números de alumnos de ADD: " alum
 	sum_not=0
 	suspensos=0
@@ -282,12 +282,12 @@ alumnos(){
 			(( aprobados++ ))
 		fi
 	done
-	not_med=$(( "$sum_not"/"$alum" )
+	not_med=$(( "$sum_not"/"$alum" ))
 	echo "Total de suspensos: $suspensos"
 	echo "Totale de apronbados: $aprobados"
 	echo "Nota media: $not_med"
-
 }
+
 op=1
 
 while [ $op != 0 ]; do
