@@ -288,6 +288,16 @@ alumnos() {
 	echo "Nota media: $not_med"
 }
 
+quita_blancos(){
+	for archivo in *; do
+		if [[ "$archivo" == *" "* ]]; then
+			nue_archivo="${file// /_}"
+			mv "$archivo" "$nue_archivo"
+			echo "El archivo "$archivo" ahora es "$nue_archivo""
+		fi
+	done
+}
+
 op=1
 
 while [ $op != 0 ]; do
@@ -327,8 +337,8 @@ while [ $op != 0 ]; do
 	     reescribir $palabra;;
 #          16)contarusu;;
 	  17)alumnos;;
-#	18)
-#	19)
+	  18)quita_blancos;;
+	  19)lineas;;
 #	20)
 	  *) echo  "Opción no válida."
 	esac
