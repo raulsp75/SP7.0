@@ -279,7 +279,11 @@ lineas() {
 	read -p "Selecciona otro numero entre 1 y 10: " lin
 
 	for ((i=1; i<=lin; i++)); do
-		printf '%s' "$(head -c $num < /dev/zero | tr '\0' "$car")"
+    		linea=""
+    		for ((o=1; o<=num; o++)); do
+        		linea+="$car"
+    		done
+   		 echo "$linea"
 	done
 
 }
