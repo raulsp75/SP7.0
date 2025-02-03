@@ -44,5 +44,3 @@ while IFS= read linea; do
 
 fi
 done < $ruta
-
-

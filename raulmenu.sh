@@ -279,7 +279,7 @@ lineas() {
 	read -p "Selecciona otro numero entre 1 y 10: " lin
 
 	for ((i=1; i<=lin; i++)); do
-#    		linea=""
+    		linea=""
     		for ((o=1; o<=num; o++)); do
         		linea+="$car"
     		done
@@ -287,6 +287,12 @@ lineas() {
 	done
 
 }
+
+analizar() {
+	
+
+}
+
 
 op=1
 
@@ -336,7 +342,7 @@ while [ $op != 0 ]; do
           8)contar;;
 	  9)privilegios;;
 	  10)octal;;
-	  11)romano;;
+#	  11)romano;;
           12)automatizar;;
 	  13)read -p "Seleccione el nombre del archivo: " nombre
 	     read -p "Seleccione el tamano del archivo en kb: " tamano
@@ -346,11 +352,12 @@ while [ $op != 0 ]; do
              crear_2 $nombre $tamano;;
 	  15)read -p "Seleccione la palabra que quiera reescribir: " palabra
 	     reescribir $palabra;;
-#          16)contarusu;;
+#         16)contarusu;;
 	  17)alumnos;;
 	  18)quita_blancos;;
 	  19)lineas;;
-#	20)
+#	  20)read -p "Selecciona el directorio: " dir
+	     analizar $dir;;
 	  *) echo  "Opción no válida."
 	esac
 
@@ -365,3 +372,5 @@ done
 #cat <<EOF inicia un bloque de texto, y todo lo que escribas después se mantiene tal cual, incluyendo saltos de línea y espacios.
 #[ $? -ne 0 ] significa "si el código de salida no es 0" (o sea, si falló).
 #(( intentos ++ ))  Con esta opercaion sumamos +1 a la variable intentos
+#linea="" vacia la variable
+#El operador += toma el valor actual de la variable y le añade (concatena) el contenido de la derecha.
