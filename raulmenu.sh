@@ -1,30 +1,5 @@
 
 #!/bin/bash
-#Funcion del menú
-menu() {
-	echo "0. Salir"
-	echo "1. Factorial"
-	echo "2. Bisiesto"
-	echo "3. Configurar Red"
-	echo "4. Adivina"
-	echo "5. Edad"
-	echo "6. Fichero"
-	echo "7. Buscar"
-	echo "8. Contar"
-	echo "9. Privilegios"
-	echo "10. Permisos Octal"
-	echo "11. Romano"
-	echo "12. Automatizar"
-	echo "13. Crear"
-	echo "14. Crear_2"
-	echo "15. Reescribir"
-	echo "16. Contusu"
-	echo "17. Alumnos"
-	echo "18. Quita_Blancos"
-	echo "19. Lineas"
-	echo "20. Analizar"
-	echo "======================"
-}
 
 factorial() {
 	numFac=1
@@ -110,7 +85,7 @@ adivina() {
 	done
 }
 
-edad(){
+edad() {
 	#Le pedimos la edad del usuario
 	read -p "Introduce tu edad: " edad
 	#Metemos un if para saber la edad que tiene el usuario
@@ -129,7 +104,7 @@ edad(){
 	fi
 }
 
-fichero(){
+fichero() {
 	read -p "Seleccione el nombre del fichero que quiere buscar: (Ej: Fichero.txt) " fichero
 	ruta=$(find / -name "$fichero" 2>/dev/null)
 	tamano=$(ls -l "$ruta" | awk '{print $5}')
@@ -143,7 +118,7 @@ fichero(){
 	echo "Este es el punto de montaje: $montaje"
 }
 
-buscar(){
+buscar() {
 	read -p "Seleccione el nombre del fichero que quiere buscar: (Ej: Fichero.txt) " fichero
 	existe=$(find / -name "$fichero" 2>/dev/null)
 	if [[ -f "$existe" ]]; then
@@ -156,13 +131,13 @@ buscar(){
 	fi
 }
 
-contar(){
+contar() {
 	read -p "Selecciona un directorio para saber el numero de ficheros: " fichero
 	numero=$( find "$fichero" -type f | wc -l)
 	 echo "En el directorio "$fichero" hay "$numero" archivos."
 }
 
-privilegios(){
+privilegios() {
 	if [[ $EUID -eq 0 ]] ; then
    	  echo "El usuario tiene privilegios administrativos (root)."
 	elif  groups | grep -qw "sudo"; then
@@ -172,7 +147,7 @@ privilegios(){
 	fi
 }
 
-octal(){
+octal() {
 	read -p "Seleccione la ruta absoluta de su directorio/archivo: (Ej:/home/raul/prueb.txt) " ruta
 	permisos=$(stat -c "%#a" "$ruta")
 	echo "Los permisos de ruta son: "$permisos""
@@ -185,7 +160,7 @@ octal(){
 #	else
 #}
 
-automatizar(){
+automatizar() {
 	usus=$( ls /mnt/usuarios 2>/dev/null )
 
 	if [[ -z "$usus" ]]; then
@@ -208,7 +183,7 @@ automatizar(){
 	fi
 }
 
-crear(){
+crear() {
 	if [[ ! -z $1  && ! -z $2 ]]; then
 		truncate -s $2K $1
 		echo "El archivo $1 ha sido creado con $2 kb"
@@ -226,7 +201,7 @@ crear(){
 	fi
 }
 
-crear_2(){
+crear_2() {
 	ficher="fichero_vacio"
         kb="1024"
         num=0
@@ -255,7 +230,7 @@ crear_2(){
         fi
 }
 
-reescribir(){
+reescribir() {
 	palabra="$1"
 	pal=$( echo "$palabra" | tr 'aeiouAEIOU' '1234512345' )
 	echo "Tu palabra reescrita es "$pal""
@@ -288,7 +263,7 @@ alumnos() {
 	echo "Nota media: $not_med"
 }
 
-quita_blancos(){
+quita_blancos() {
 	for archivo in *; do
 		if [[ "$archivo" == *" "* ]]; then
 			nue_archivo="${archivo// /_}"
@@ -298,11 +273,21 @@ quita_blancos(){
 	done
 }
 
+lineas() {
+	read -p "Selecciona un caracter cualquiera: (Ej:a) " car
+	read -p "Selecciona un númnero entre 1 y 60: " num
+	read -p "Selecciona otro numero entre 1 y 10: " lin
+
+	for ((i=1; 1<=lin; i++)); do
+		printf '%s' "$(head -c $num < /dev/zero | tr '\0' "$car")"
+	done
+
+}
+
 op=1
 
 while [ $op != 0 ]; do
 	#Mostrar el menu
-#	menu
 	echo "0. Salir"
         echo "1. Factorial"
         echo "2. Bisiesto"
