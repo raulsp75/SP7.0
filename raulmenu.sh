@@ -275,10 +275,10 @@ quita_blancos() {
 
 lineas() {
 	read -p "Selecciona un caracter cualquiera: (Ej:a) " car
-	read -p "Selecciona un númnero entre 1 y 60: " num
+	read -p "Selecciona un número entre 1 y 60: " num
 	read -p "Selecciona otro numero entre 1 y 10: " lin
 
-	for ((i=1; 1<=lin; i++)); do
+	for ((i=1; i<=lin; i++)); do
 		printf '%s' "$(head -c $num < /dev/zero | tr '\0' "$car")"
 	done
 
