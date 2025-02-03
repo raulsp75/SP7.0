@@ -302,7 +302,29 @@ op=1
 
 while [ $op != 0 ]; do
 	#Mostrar el menu
-	menu
+#	menu
+	echo "0. Salir"
+        echo "1. Factorial"
+        echo "2. Bisiesto"
+        echo "3. Configurar Red"
+        echo "4. Adivina"
+        echo "5. Edad"
+        echo "6. Fichero"
+        echo "7. Buscar"
+        echo "8. Contar"
+        echo "9. Privilegios"
+        echo "10. Permisos Octal"
+        echo "11. Romano"
+        echo "12. Automatizar"
+        echo "13. Crear"
+        echo "14. Crear_2"
+        echo "15. Reescribir"
+        echo "16. Contusu"
+        echo "17. Alumnos"
+        echo "18. Quita_Blancos"
+        echo "19. Lineas"
+        echo "20. Analizar"
+        echo "======================"
 
 	#Coger la opcion
 	read -p "Selecione una opcion: " op
