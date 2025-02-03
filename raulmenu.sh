@@ -279,7 +279,7 @@ lineas() {
 	read -p "Selecciona otro numero entre 1 y 10: " lin
 
 	for ((i=1; i<=lin; i++)); do
-    		linea=""
+#    		linea=""
     		for ((o=1; o<=num; o++)); do
         		linea+="$car"
     		done
