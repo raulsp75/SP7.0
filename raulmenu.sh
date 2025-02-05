@@ -288,10 +288,10 @@ lineas() {
 
 }
 
-analizar() {
-	
-
-}
+#analizar() {
+#	
+#
+#}
 
 
 op=1
@@ -357,7 +357,7 @@ while [ $op != 0 ]; do
 	  18)quita_blancos;;
 	  19)lineas;;
 #	  20)read -p "Selecciona el directorio: " dir
-	     analizar $dir;;
+#	     analizar $dir;;
 	  *) echo  "Opción no válida."
 	esac
 
