@@ -30,7 +30,7 @@ configurared() {
         else
         rm /etc/netplan/50-cloud-init.yaml
         sleep 1
-        cat <<EOF > /etc/netplan/50-cloud-init.yaml
+echo "
 network:
     ethernets:
         enp0s3:
@@ -42,7 +42,7 @@ network:
             nameservers:
              addresses: [$4]
     version: 2
-EOF
+" > /etc/netplan/50-cloud-init.yaml
            netplan apply  2>/dev/null
            echo "Aplicando la conexión...."
            sleep 2
