@@ -153,12 +153,26 @@ octal() {
 	echo "Los permisos de ruta son: "$permisos""
 }
 
-#romano(){
-#	read -p "Selecciona un numero entre el 1-200: " num
-#	if [[ "$num" -gt 200 || "$num" -lt 1 ]]; then
-#	  echo "El numero "$num" no está entre el 1-200"
-#	else
-#}
+romano(){
+	read -p "Selecciona un numero entre el 1-200: " num
+	if [[ "$num" -gt 200 || "$num" -lt 1 ]]; then
+	  echo "El numero "$num" no está entre el 1-200"
+	else
+		# Arrays de valores y símbolos romanos
+    		valores=(1000 900 500 400 100 90 50 40 10 9 5 4 1)
+    		simbolos=("M" "CM" "D" "CD" "C" "XC" "L" "XL" "X" "IX" "V" "IV" "I")
+
+    		for (( i=0; i<${#valores[@]}; i++ )); do
+        		while (( num >= valores[i] )); do
+            			romano+="${simbolos[i]}"
+ 				echo "$romano"
+            			(( num -= valores[i] ))
+        		done
+    		done
+
+    		echo "$romano"
+	fi
+}
 
 automatizar() {
 	usus=$( ls /mnt/usuarios 2>/dev/null )
@@ -342,7 +356,7 @@ while [ $op != 0 ]; do
           8)contar;;
 	  9)privilegios;;
 	  10)octal;;
-#	  11)romano;;
+	  11)romano;;
           12)automatizar;;
 	  13)read -p "Seleccione el nombre del archivo: " nombre
 	     read -p "Seleccione el tamano del archivo en kb: " tamano
