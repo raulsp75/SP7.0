@@ -25,16 +25,12 @@ bisiesto() {
 }
 
 configurared() {
-	#Confrimamos que los parametros existen
-	if [[ -n $1 && -n $2 && -n $3 && -n $4 ]]; then
-	  echo "Introduciendo parámetros..."
-
-	else
-	  echo "Faltan parámetros por añadir"
-	exit
-	fi
-	#Introducimos los parametros en el archivo
-	cat <<EOF > /etc/netplan/50-cloud-init.yaml
+	        if [[ -z $1 && -z $2 && -z $3 && -z $4 ]]; then
+           echo "No has introducido alguno de los datos, vuelve a intentarlo."
+        else
+        rm /etc/netplan/50-cloud-init.yaml
+        sleep 1
+        cat <<EOF > /etc/netplan/50-cloud-init.yaml
 network:
     ethernets:
         enp0s3:
@@ -47,18 +43,13 @@ network:
              addresses: [$4]
     version: 2
 EOF
-	#Aplicamos la configuración
-	netplan apply
-	if [ $? -ne 0 ]; then
-	  echo "Las opciones proporcionadas no pueden ser aplicadas. Vuelva a intentarlo ejecutando el script"
-	exit
-	#Mostramos la configuración
-	else
-	  echo "==========================================================================="
-	  echo "La configuración ha sido modificada con exito. Se la muestro a continuación:"
-	  sleep 1
-	  ip a
-	fi
+           netplan apply  2>/dev/null
+           echo "Aplicando la conexión...."
+           sleep 2
+           echo "Aquí puede ver la ip: "
+           ip a
+        fi
+
 }
 
 adivina() {
