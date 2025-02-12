@@ -154,24 +154,25 @@ octal() {
 }
 
 romano(){
-	read -p "Selecciona un numero entre el 1-200: " num
+	read -p "Selecciona un número entre el 1-200: " num
+
 	if [[ "$num" -gt 200 || "$num" -lt 1 ]]; then
-	  echo "El numero "$num" no está entre el 1-200"
+    	  echo "El número $num no está entre el 1-200"
 	else
-		# Arrays de valores y símbolos romanos
-    		valores=(1000 900 500 400 100 90 50 40 10 9 5 4 1)
-    		simbolos=("M" "CM" "D" "CD" "C" "XC" "L" "XL" "X" "IX" "V" "IV" "I")
+    	  romano=""
+    	  # Arrays de valores y símbolos romanos
+    	  valores=(1000 900 500 400 100 90 50 40 10 9 5 4 1)
+    	  simbolos=("M" "CM" "D" "CD" "C" "XC" "L" "XL" "X" "IX" "V" "IV" "I")
 
-    		for (( i=0; i<${#valores[@]}; i++ )); do
-        		while (( $num >= valores[i] )); do
-            			romano+="${simbolos[i]}"
- 				echo "$romano"
-            			(( $num -= valores[i] ))
-        		done
-    		done
+    	  for (( i=0; i<${#valores[@]}; i++ )); do
+            while (( num >= ${valores[i]} )); do
+              romano+="${simbolos[i]}"
+              (( num -= ${valores[i]} ))
+        done
+    done
 
-    		echo "$romano"
-	fi
+    echo "Número en romano: $romano"
+fi
 }
 
 automatizar() {
@@ -366,7 +367,7 @@ while [ $op != 0 ]; do
              crear_2 $nombre $tamano;;
 	  15)read -p "Seleccione la palabra que quiera reescribir: " palabra
 	     reescribir $palabra;;
-#         16)contarusu;;
+          16)contarusu;;
 	  17)alumnos;;
 	  18)quita_blancos;;
 	  19)lineas;;
