@@ -163,10 +163,10 @@ romano(){
     		simbolos=("M" "CM" "D" "CD" "C" "XC" "L" "XL" "X" "IX" "V" "IV" "I")
 
     		for (( i=0; i<${#valores[@]}; i++ )); do
-        		while (( num >= valores[i] )); do
+        		while (( $num >= valores[i] )); do
             			romano+="${simbolos[i]}"
  				echo "$romano"
-            			(( num -= valores[i] ))
+            			(( $num -= valores[i] ))
         		done
     		done
 
