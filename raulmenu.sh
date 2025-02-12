@@ -314,7 +314,7 @@ analizar() {
 	else
     	  echo "Analizando $dir..."
     	  for ext in "${doc[@]}"; do
-        	archivos=$(find "$dir" -type f -iname "*.$ext")
+        	archivos=$(find "$dir" -type f -iname "*.$ext" 2>/dev/null)
 		cantidad=$(echo "$archivos" | wc -l)
 		echo "Extensión .$ext: $cantidad archivos"
     	  done
