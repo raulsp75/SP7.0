@@ -304,11 +304,15 @@ lineas() {
 }
 
 analizar() {
+	#Guarda la primera variable en dir
 	local dir="$1"
+	#Elimina la primera variable
     	shift
+	#Guarda todos los parametros restantes en la variable doc en un array
     	local doc=("$@")
 
     	# Verificar que el directorio existe
+	#Si no es un directorio...
     	if [ ! -d "$dir" ]; then
 	  echo "Error: Directorio no encontrado"
 	else
