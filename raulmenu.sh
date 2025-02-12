@@ -303,10 +303,23 @@ lineas() {
 
 }
 
-#analizar() {
-#	
-#
-#}
+analizar() {
+	local dir="$1"
+    	shift
+    	local doc=("$@")
+
+    	# Verificar que el directorio existe
+    	if [ ! -d "$dir" ]; then
+	  echo "Error: Directorio no encontrado"
+	else
+    	  echo "Analizando $dir..."
+    	  for ext in "${doc[@]}"; do
+        	archivos=$(find "$dir" -type f -iname "*.$ext")
+		cantidad=$(echo "$archivos" | wc -l)
+		echo "Extensión .$ext: $cantidad archivos"
+    	  done
+	fi
+}
 
 
 op=1
@@ -371,8 +384,9 @@ while [ $op != 0 ]; do
 	  17)alumnos;;
 	  18)quita_blancos;;
 	  19)lineas;;
-#	  20)read -p "Selecciona el directorio: " dir
-#	     analizar $dir;;
+	  20)read -p "Selecciona el directorio: " dir
+	     read -p "Selecciona el tipo de documento que quieres analizar: " doc
+	     analizar $dir $doc;;
 	  *) echo  "Opción no válida."
 	esac
 
