@@ -245,11 +245,34 @@ reescribir() {
 	echo "Tu palabra reescrita es "$pal""
 }
 
-#contusu(){
-#	fecha=$(date +Y%m%d%)
-#	
+contusu(){
+	usuarios=()
+        num=1
+        fecha=$(date +%Y-%m-%d)
 
-#}
+        echo "Lista de usuarios en /home:"
+        for usuario in /home/*; do
+           usuario=$(basename "$usuario") # Obtiene solo el nombre del directorio
+           if id "$usuario" &>/dev/null; then # Verifica si es un usuario válido en /etc/pass>
+           usuarios+=("$usuario")
+           echo "$usuario"
+           fi
+        done
+
+        read -p "Escoge un nombre de usuario del listado para crear una copia: " usu
+
+        if [ $(echo "${usuarios[*]}" | grep -ow $usu) ]; then
+           destino="/home/copiaseguridad/$usu"
+           sudo mkdir -p "$destino"
+           sudo tar -czvf "$destino/${usu}_${fecha}.tar.gz" "/home/$usu/"
+           echo "Copia de seguridad creada en $destino/${usu}_${fecha}.tar.gz"
+        else
+           echo "El usuario elegido no existe."
+        fi
+
+}
+
+
 
 alumnos() {
 	read -p "Seleccione el números de alumnos de ADD: " alum
@@ -298,25 +321,20 @@ lineas() {
 }
 
 analizar() {
-	#Guarda la primera variable en dir
-	local dir="$1"
-	#Elimina la primera variable
-    	shift
-	#Guarda todos los parametros restantes en la variable doc en un array
-    	local doc=("$@")
+        dir="$1"
+        shift
+        doc=("$@")
 
-    	# Verificar que el directorio existe
-	#Si no es un directorio...
-    	if [ ! -d "$dir" ]; then
-	  echo "Error: Directorio no encontrado"
-	else
-    	  echo "Analizando $dir..."
-    	  for ext in "${doc[@]}"; do
-        	archivos=$(find "$dir" -type f -iname "*.$ext" 2>/dev/null)
-		cantidad=$(echo "$archivos" | wc -l)
-		echo "Extensión .$ext: $cantidad archivos"
-    	  done
-	fi
+        if [ ! -d $dir ]; then
+            echo "El directorio no existe. "
+        else
+           for ext in ${doc[@]}; do
+                archivos=$(find $dir -type f -iname "*.$ext" 2>/dev/null)
+                contar=$(echo "$archivos" | wc -l)
+                echo "Extension $ext: $contar "
+           done
+        fi
+
 }
 
 
